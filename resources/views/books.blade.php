@@ -22,16 +22,20 @@
         <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($books as $book)
                 <div class="fade-in bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300">
-                    <h2 class="text-xl font-semibold text-blue-700 mb-2">{{ $book['title'] }}</h2>
-                    <p><span class="text-gray-600 font-medium">Edición:</span> {{ $book['edition'] }}</p>
-                    <p><span class="text-gray-600 font-medium">Derechos de autor:</span> {{ $book['copyright'] }}</p>
-                    <p><span class="text-gray-600 font-medium">Idioma:</span> {{ $book['language'] }}</p>
-                    <p><span class="text-gray-600 font-medium">Páginas:</span> {{ $book['pages'] }}</p>
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">{{ $book->title }}</h2>
+                    <p><span class="text-gray-600 font-medium">Edición:</span> {{ $book->edition }}</p>
+                    <p><span class="text-gray-600 font-medium">Derechos de autor:</span> {{ $book->copyright }}</p>
+                    <p><span class="text-gray-600 font-medium">Idioma:</span> {{ $book->language }}</p>
+                    <p><span class="text-gray-600 font-medium">Páginas:</span> {{ $book->pages }}</p>
                     <p><span class="text-gray-600 font-medium">Autor:</span> 
-                        <a href="{{ url('/authors') }}" class="text-green-600 hover:underline">{{ $book['author'] }}</a>
+                        <a href="{{ url('/authors') }}" class="text-green-600 hover:underline">
+                            {{ $book->author->author }} ({{ $book->author->nationality }})
+                        </a>
                     </p>
                     <p><span class="text-gray-600 font-medium">Editorial:</span> 
-                        <a href="{{ url('/publishers') }}" class="text-green-600 hover:underline">{{ $book['publisher'] }}</a>
+                        <a href="{{ url('/publishers') }}" class="text-green-600 hover:underline">
+                            {{ $book->publisher->publisher }} ({{ $book->publisher->country }})
+                        </a>
                     </p>
                 </div>
             @endforeach
